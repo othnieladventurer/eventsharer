@@ -959,16 +959,14 @@
         </div>
     </footer>
 
-    <script>
+<script>
   $(document).ready(function(){
     $('.owl-carousel').owlCarousel({
       items: 1,
       loop: true,
-      dots: true,
       autoplay: true,
       autoplayTimeout: 6000,
       smartSpeed: 1000,
-      dots: false,
       nav: false,
       animateOut: 'fadeOut'
     });
@@ -977,8 +975,20 @@
 
 
 
-    
-    <script>
+ <script>
+  // Lightbox functions - make them globally accessible
+  function openLightbox(src) {
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImage = document.getElementById('lightboxImage');
+    lightboxImage.src = src;
+    lightboxModal.classList.remove('hidden');
+  }
+
+  function closeLightbox() {
+    const lightboxModal = document.getElementById('lightboxModal');
+    lightboxModal.classList.add('hidden');
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     // Owl Carousel - Testimonial Slider
     $('.testimonial-slider').owlCarousel({
@@ -992,19 +1002,6 @@
         768: { items: 2 },
         1024: { items: 3 }
       }
-    });
-
-    // Owl Carousel - Hero Slider
-    $('.hero-carousel').owlCarousel({
-      loop: true,
-      items: 1,
-      margin: 0,
-      dots: true,
-      nav: false,
-      autoplay: true,
-      autoplayTimeout: 6000,
-      animateOut: 'fadeOut',
-      animateIn: 'fadeIn',
     });
 
     // Mobile menu toggle
@@ -1036,22 +1033,20 @@
       }
     });
 
-    backToTopButton.addEventListener('click', () => {
+    backToTopButton?.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Smooth scrolling for anchor links
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href'))?.scrollIntoView({
-          behavior: 'smooth'
-        });
+        document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
         mobileNav?.classList.add('hidden');
       });
     });
 
-    // Simple form handling (demo)
+    // Simple form handler
     document.querySelectorAll('form').forEach(form => {
       form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -1093,19 +1088,8 @@
       }
     });
 
-    // Lightbox functionality
+    // Close lightbox when clicking outside image
     const lightboxModal = document.getElementById('lightboxModal');
-    const lightboxImage = document.getElementById('lightboxImage');
-
-    window.openLightbox = function (src) {
-      lightboxImage.src = src;
-      lightboxModal.classList.remove('hidden');
-    };
-
-    window.closeLightbox = function () {
-      lightboxModal.classList.add('hidden');
-    };
-
     lightboxModal?.addEventListener('click', function (e) {
       if (e.target.id === 'lightboxModal') closeLightbox();
     });
