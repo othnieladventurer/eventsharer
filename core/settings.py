@@ -12,8 +12,18 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+import environ
+import dj_database_url
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+ENVIRONMENT= env('ENVIRONMENT', default='production')
+SERVICE_ACCOUNT_FILE = os.path.join(BASE_DIR, 'credentials', 'service_account.json')
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,14 +36,14 @@ SECRET_KEY = 'django-insecure-+#n8ro4q#50(m@sw__9napjvs1$#-77jto8w8$&p_*ci1#jm_q
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['127.0.0.1', 'eventsharer.com',  'instructsphere-production.up.railway.app' ]
+ALLOWED_HOSTS = ['127.0.0.1', 'eventsharer.com',  'eventsharer-production.up.railway.app' ]
 
 
 
 CSRF_TRUSTED_ORIGINS = [
     'https://www.eventsharer.saasiskey.com',
     'https://eventsharer.saasiskey.com',
-    'https://instructsphere-production.up.railway.app'
+    'https://eventsharer-production.up.railway.app'
 ]
 
 
