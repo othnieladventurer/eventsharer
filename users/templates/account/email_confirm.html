@@ -1,0 +1,45 @@
+{% extends "services/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+<main class="main b">
+    <br><br><br>
+    
+    <section class="py-5 bg-light">
+        <div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+            <div class="card shadow-lg border-0" style="max-width: 500px;">
+                <div class="card-body text-center p-4">
+                    <h2 class="card-title mb-3">Email Confirmation</h2>
+                    {% if confirmation %}
+                        {% if confirmation.email_address.user == request.user %}
+                            <p class="card-text text-primary">
+                                Thank you for confirming your email: <strong>{{ confirmation.email_address.email }}</strong>.
+                            </p>
+                            <a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg mt-3 rounded-0" style="background-color: #4154f1;">Go to Dashboard</a>
+                        {% else %}
+                            <p class="card-text text-warning">
+                                This confirmation link is for a different account.
+                            </p>
+                        {% endif %}
+                    {% else %}
+                        <p class="card-text text-danger">
+                            The confirmation link is invalid or has already been used.
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+</main>
+
+
+
+
+
+{% endblock content %}
+
+
