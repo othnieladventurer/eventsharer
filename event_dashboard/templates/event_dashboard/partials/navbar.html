@@ -1,0 +1,64 @@
+{% load static %}
+<!-- Navigation -->
+<nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20">
+            <div class="flex items-center">
+                <a href="/" class="flex items-center">
+                    <i class="fas fa-sparkles text-primary text-3xl mr-3"></i>
+                    <span class="text-2xl font-bold text-gray-900 playfair">Eventsharer</span>
+                </a>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#" class="text-gray-700 hover:text-primary transition font-medium">Home</a>
+                
+                <a href="#events" class="text-gray-700 hover:text-primary transition font-medium">Events</a>
+                <a href="#share" class="text-gray-700 hover:text-primary transition font-medium">Share</a>
+                <a href="#features" class="text-gray-700 hover:text-primary transition font-medium">Features</a>
+                <a href="#pricing" class="text-gray-700 hover:text-primary transition font-medium">Pricing</a>
+                <a href="#gallery" class="text-gray-700 hover:text-primary transition font-medium">Gallery</a>
+                
+                
+                <a href="#contact" class="text-gray-700 hover:text-primary transition font-medium">Contact</a>
+            </div>
+            
+            <div class="hidden md:flex items-center">
+                <button class="bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white rounded-full px-6 py-3 font-medium transition-all">Sign In</button>
+            </div>
+            
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Navigation -->
+<div id="mobile-nav" class="hidden mobile-nav md:hidden fixed inset-0 bg-white z-50 p-6">
+    <div class="flex justify-between mb-10">
+        <a href="#" class="flex items-center">
+            <i class="fas fa-sparkles text-primary text-3xl mr-3"></i>
+            <span class="text-2xl font-bold text-gray-900 playfair">Eventsharer</span>
+        </a>
+        <button id="close-menu" class="text-gray-700 text-2xl">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="space-y-6">
+        <a href="#" class="text-gray-700 hover:text-primary transition font-medium">Home</a>
+
+        <a href="#events" class="text-gray-700 hover:text-primary transition font-medium">Events</a>
+        <a href="#share" class="text-gray-700 hover:text-primary transition font-medium">Share</a>
+        <a href="#features" class="text-gray-700 hover:text-primary transition font-medium">Features</a>
+        <a href="#pricing" class="text-gray-700 hover:text-primary transition font-medium">Pricing</a>
+        <a href="#gallery" class="text-gray-700 hover:text-primary transition font-medium">Gallery</a>
+        
+        
+        <a href="#contact" class="text-gray-700 hover:text-primary transition font-medium">Contact</a>
+        <button class="bg-primary text-white rounded-full px-6 py-3 font-medium transition mt-12 w-full">Sign In</button>
+    </div>
+</div>
