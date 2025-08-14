@@ -1,0 +1,769 @@
+{% extends 'event_dashboard/base.html' %}
+
+
+{% load static %}
+
+
+
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="relative" id="hero">
+<div class="owl-carousel owl-theme">
+
+<!-- Slide 2 -->
+<div class="relative min-h-[90vh] bg-cover bg-center flex items-center justify-center px-4"
+        style="background-image: url('https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg');">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 text-center max-w-4xl mx-auto">
+    <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white playfair">Weddings, Concerts, and More</h1>
+    <p class="text-xl mb-10 text-white/90">Every guest is a photographer. Collect their memories in one place.</p>
+    <div class="flex flex-wrap gap-4 justify-center">
+        <a href="#pricing" class="bg-white text-rose-600 hover:bg-gray-100 rounded-full px-8 py-4 font-bold text-lg transition hover:scale-105">
+        <i class="fas fa-bolt mr-2"></i> Try It Now
+        </a>
+        <a href="#gallery" class="bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 rounded-full px-8 py-4 font-bold text-lg transition hover:scale-105">
+        <i class="fas fa-image mr-2"></i> Gallery
+        </a>
+    </div>
+    </div>
+</div>
+
+
+<!-- Slide 1 -->
+<div class="relative min-h-[90vh] bg-cover bg-center flex items-center justify-center px-4"
+        style="background-image: url('https://images.unsplash.com/photo-1665993546542-298263cbd961?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 text-center max-w-4xl mx-auto">
+    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 playfair">Capture Every Party or Event</h1>
+    <p class="text-xl mb-10 text-white/90">Relive and share your most precious memories.</p>
+    <div class="flex flex-wrap gap-4 justify-center">
+        <a href="#pricing" class="bg-white text-rose-600 hover:bg-gray-100 rounded-full px-8 py-4 font-bold text-lg transition hover:scale-105">
+        <i class="fas fa-heart mr-2"></i> Start Sharing
+        </a>
+        
+    </div>
+    </div>
+</div>
+
+
+<!-- Slide 3 -->
+<div class="relative min-h-[90vh] bg-cover bg-center flex items-center justify-center px-4"
+        style="background-image: url('https://images.pexels.com/photos/3593432/pexels-photo-3593432.jpeg');">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 text-center max-w-4xl mx-auto">
+    <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white playfair">The Easiest Way to Share</h1>
+    <p class="text-xl mb-10 text-white/90">Create one link, scan one QR code — and everyone uploads effortlessly.</p>
+    <div class="flex flex-wrap gap-4 justify-center">
+        
+        <a href="#pricing" class="bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 rounded-full px-8 py-4 font-bold text-lg transition hover:scale-105">
+        <i class="fas fa-info-circle mr-2"></i> Learn More
+        </a>
+    </div>
+    </div>
+</div>
+
+</div>
+</section>
+
+
+
+
+<section class="bg-white py-16 px-6 md:px-12 lg:px-24" id="about">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+        <!-- Text Content -->
+        <div>
+        <h2 class="text-4xl font-bold text-gray-800 mb-6">About EventSharer</h2>
+        <p class="text-lg text-gray-600 mb-6">
+            EventSharer is a platform that lets you and your guests upload photos and videos from weddings, concerts, birthdays, and more — all in one shared album.
+        </p>
+        <p class="text-lg text-gray-600 mb-6">
+            Say goodbye to scattered memories. EventSharer brings every angle of your event together, beautifully.
+        </p>
+        <a href="#events" class="bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white rounded-full px-6 py-3 font-medium transition-all">
+            Learn More
+        </a>
+        </div>
+
+        <!-- Image -->
+        <div>
+        <img src="https://images.pexels.com/photos/5804898/pexels-photo-5804898.jpeg" alt="Event Sharing" class="w-full rounded-xl shadow-lg">
+        </div>
+
+    </div>
+    </section>
+
+
+<!-- Event Categories -->
+<section id="events" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 playfair">Celebrate Every Occasion</h2>
+            <p class="text-xl text-gray-600">From intimate gatherings to grand celebrations, find all your event categories here</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Wedding Card -->
+            <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Wedding" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">Weddings</h3>
+                    <p class="text-gray-600 mb-6">Share the magic from engagement through honeymoon moments.</p>
+                    <a href="#" class="text-primary font-semibold inline-flex items-center">
+                        View Galleries <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Parties Card -->
+            <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Party" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">Parties</h3>
+                    <p class="text-gray-600 mb-6">Birthdays, anniversaries, and themed celebrations.</p>
+                    <a href="#" class="text-primary font-semibold inline-flex items-center">
+                        View Galleries <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Corporate Events Card -->
+            <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Corporate" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">Corporate</h3>
+                    <p class="text-gray-600 mb-6">Conferences, product launches, and company celebrations.</p>
+                    <a href="#" class="text-primary font-semibold inline-flex items-center">
+                        View Galleries <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Community Events Card -->
+            <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Community" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">Community</h3>
+                    <p class="text-gray-600 mb-6">Festivals, charity events, and local gatherings.</p>
+                    <a href="#" class="text-primary font-semibold inline-flex items-center">
+                        View Galleries <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+
+<!-- Share Section -->
+<section id="share" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-14 items-center">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 playfair">Share Your Event Seamlessly</h2>
+                <p class="text-gray-600 text-lg mb-8 leading-relaxed">Offer multiple ways for guests to contribute. They can either scan your event's QR code or use the upload interface, making participation effortless for everyone.</p>
+                
+                <div class="space-y-6 max-w-lg">
+                    <div class="flex items-start">
+                        <div class="bg-primary/10 text-primary flex-shrink-0 h-11 w-11 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-users text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Create Private Event</h4>
+                            <p class="text-gray-600">Set up your event in seconds</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-primary/10 text-primary flex-shrink-0 h-11 w-11 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-share-alt text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Share with Guests</h4>
+                            <p class="text-gray-600">Send unique access link via text or email</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-primary/10 text-primary flex-shrink-0 h-11 w-11 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-cloud-upload-alt text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Collect Memories</h4>
+                            <p class="text-gray-600">Guests can upload photos and videos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-primary/10 text-primary flex-shrink-0 h-11 w-11 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-book text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Create Your Album</h4>
+                            <p class="text-gray-600">Download all media or order printed albums</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 rounded-2xl p-8">
+                <div class="flex flex-col lg:flex-row gap-6">
+                    <div class="upload-box flex-1 h-full rounded-xl flex flex-col items-center justify-center p-8 text-center border-2 border-dashed border-gray-200">
+                        <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Drag & Drop Uploads</h3>
+                        <p class="text-gray-500 mb-6">For web users - upload photos and videos directly</p>
+                        <button class="bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white rounded-full px-6 py-3 font-medium transition-all">Upload Media</button>
+                    </div>
+                    <div class="flex-1 h-full rounded-xl flex flex-col items-center justify-center p-8 text-center bg-white border border-gray-200">
+                        <i class="fas fa-qrcode text-4xl text-primary mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">QR Code Scanning</h3>
+                        <p class="text-gray-500 mb-4">For mobile users - scan to instantly access your event</p>
+                        <div class="mb-4 p-2 bg-white border border-gray-200">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://eventsharer.com/your-event" alt="Event QR Code" class="w-24 h-24">
+                        </div>
+                        <button class="bg-gray-900 hover:bg-gray-800 text-white rounded-full px-6 py-3 font-medium transition-all">Download QR Code</button>
+                        <p class="text-gray-400 text-xs mt-2">Premium feature for branded QR codes</p>
+                    </div>
+                </div>
+                <p class="text-center text-gray-500 text-sm mt-4"><a href="#" class="text-primary font-medium">View advanced sharing options</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 playfair">Why Use Eventsharer?</h2>
+            <p class="text-xl text-gray-600">All the features you need to collect and relive your special moments</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div class="bg-white rounded-xl p-7 shadow-lg">
+                <div class="bg-primary/10 text-primary h-16 w-16 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-images text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3">Unlimited Photos & Videos</h3>
+                <p class="text-gray-600 mb-4">Collect all moments in one place with no storage limits.</p>
+            </div>
+            
+            <!-- Feature 2 -->
+            <div class="bg-white rounded-xl p-7 shadow-lg">
+                <div class="bg-primary/10 text-primary h-16 w-16 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-lock text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3">Private Access</h3>
+                <p class="text-gray-600 mb-4">Control who sees your photos with invitation-only access.</p>
+            </div>
+            
+            <!-- Feature 3 -->
+            <div class="bg-white rounded-xl p-7 shadow-lg">
+                <div class="bg-primary/10 text-primary h-16 w-16 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-heart text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3">Like & Comment</h3>
+                <p class="text-gray-600 mb-4">Engage with shared memories and relive your special moments.</p>
+            </div>
+            
+            <!-- Feature 4 -->
+            <div class="bg-white rounded-xl p-7 shadow-lg">
+                <div class="bg-primary/10 text-primary h-16 w-16 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-cloud-download-alt text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3">Download Full Gallery</h3>
+                <p class="text-gray-600 mb-4">Download all photos with one click or order printed albums.</p>
+            </div>
+            
+            <!-- Feature 5 -->
+            <div class="bg-white rounded-xl p-7 shadow-lg">
+                <div class="bg-primary/10 text-primary h-16 w-16 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-tablet-alt text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3">Mobile App</h3>
+                <p class="text-gray-600 mb-4">Available promptly.</p>
+            </div>
+            
+            <!-- Feature 6 -->
+            <div class="bg-white rounded-xl p-7 shadow-lg">
+                <div class="bg-primary/10 text-primary h-16 w-16 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-video text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3">Video Support</h3>
+                <p class="text-gray-600 mb-4">Upload videos up to 5 minutes long without compression.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!--Plans-->
+<section class="py-20 bg-white" id="pricing">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 playfair">Simple, Transparent Pricing</h2>
+      <p class="text-xl text-gray-600">Choose the perfect plan for your needs</p>
+    </div>
+
+    <!-- Billing Toggle -->
+    <div class="flex justify-center mb-8 space-x-4">
+        <span class="font-medium">Monthly</span>
+        <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" id="billingToggle" class="sr-only peer">
+            <div class="w-11 h-6 bg-gray-200 rounded-full peer-checked:bg-pink-500 transition"></div>
+            <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition peer-checked:translate-x-5"></div>
+        </label>
+        <span class="font-medium">Yearly <span class="text-pink-500 text-sm">(Save 10%)</span></span>
+    </div>
+
+    <!-- Pricing Plans -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <!-- Free Trial -->
+        <div class="border border-gray-200 bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="p-8">
+                <h3 class="text-2xl font-bold mb-4">Free Trial</h3>
+                <p class="text-gray-600 mb-6">Explore and try it out for free</p>
+                <div class="text-5xl font-bold mb-6">
+                    <span data-price="0.00">$0.00</span>
+                    <span class="text-gray-500 text-lg" data-cycle>/month</span>
+                </div>
+                <a href="{% url 'users:custom_logout' %}" 
+                class="w-full block text-center bg-gray-200 text-gray-800 hover:bg-gray-300 rounded-lg py-3 font-medium transition">
+                    Get Started
+                </a>
+            </div>
+            <div class="border-t border-gray-200 p-8 bg-white">
+                <ul class="space-y-4">
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Limit: 20 photos, 1 video</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Event creation</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Shareable custom link (no password/login)</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Invitees can upload photos/videos</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Mobile-friendly event gallery</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Basic -->
+        <div class="border border-gray-200 bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="p-8">
+                <h3 class="text-2xl font-bold mb-4">Basic</h3>
+                <p class="text-gray-600 mb-6">Perfect for small events and testing the platform</p>
+                <div class="text-5xl font-bold mb-6">
+                    <span data-price="14.99">$14.99</span>
+                    <span class="text-gray-500 text-lg" data-cycle>/month</span>
+                </div>
+                <a href="{% url 'users:custom_logout' %}" 
+                class="w-full block text-center bg-gray-200 text-gray-800 hover:bg-gray-300 rounded-lg py-3 font-medium transition">
+                    Get Started
+                </a>
+            </div>
+            <div class="border-t border-gray-200 p-8 bg-white">
+                <ul class="space-y-4">
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Limit: 100 photos, 10 videos</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Everything in Free Trial</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Custom event name, date & cover image</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Auto-generated QR code for sharing</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Full media download (ZIP)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Pro -->
+        <div class="relative border-2 border-pink-500 transform scale-105 bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="absolute top-0 right-0 bg-pink-500 text-white px-4 py-1 text-sm font-bold rounded-bl-lg z-10">
+                Most Popular
+            </div>
+            <div class="p-8">
+                <h3 class="text-2xl font-bold mb-4">Pro</h3>
+                <p class="text-gray-600 mb-6">Great for weddings and medium events</p>
+                <div class="text-5xl font-bold mb-6">
+                    <span data-price="29.99">$29.99</span>
+                    <span class="text-gray-500 text-lg" data-cycle>/month</span>
+                </div>
+                <a href="{% url 'users:custom_logout' %}" 
+                data-plan="pro" 
+                class="w-full block text-center bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white rounded-lg py-3 font-medium transition">
+                    Get Started
+                </a>
+            </div>
+            <div class="border-t border-gray-200 p-8 bg-white">
+                <ul class="space-y-4">
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Limit: 500 photos, 50 videos</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Everything in Essential</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Branded event page (custom colors/logo)</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Live slideshow display</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Email support</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Business -->
+        <div class="border border-gray-200 bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="p-8">
+                <h3 class="text-2xl font-bold mb-4">Business</h3>
+                <p class="text-gray-600 mb-6">Ideal for professional event planners</p>
+                <div class="text-5xl font-bold mb-6">
+                    <span data-price="49.99">$49.99</span>
+                    <span class="text-gray-500 text-lg" data-cycle>/month</span>
+                </div>
+                <a href="{% url 'users:custom_logout' %}" 
+                class="w-full block text-center bg-gray-800 hover:bg-gray-900 text-white rounded-lg py-3 font-medium transition">
+                    Get Started
+                </a>
+            </div>
+            <div class="border-t border-gray-200 p-8 bg-white">
+                <ul class="space-y-4">
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Limit: Unlimited photos and videos</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Everything in Advanced</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Unlimited event creation under one account</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Admin/moderation panel for uploads</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Full custom branding (domain, layout, logo)</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Analytics dashboard (uploads, views, shares)</li>
+                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i>Priority support</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Pricing Section -->
+
+<section class="bg-white py-20 px-6 md:px-12 lg:px-24" id="gallery">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-4xl font-bold text-gray-800 mb-10 text-center">Event Highlights</h2>
+
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <!-- Gallery Items -->
+        <div class="cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=869&auto=format&fit=crop"
+            alt="Event 1"
+            class="rounded-xl shadow-md hover:scale-105 transition-transform duration-300"
+            onclick="openLightbox(this.src)">
+        </div>
+        <div class="cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?q=80&w=1470&auto=format&fit=crop"
+            alt="Event 2"
+            class="rounded-xl shadow-md hover:scale-105 transition-transform duration-300"
+            onclick="openLightbox(this.src)">
+        </div>
+        <div class="cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1588287960086-c4a332155b15?q=80&w=870&auto=format&fit=crop"
+            alt="Event 3"
+            class="rounded-xl shadow-md hover:scale-105 transition-transform duration-300"
+            onclick="openLightbox(this.src)">
+        </div>
+        <div class="cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1555526148-5cd740b44241?q=80&w=870&auto=format&fit=crop"
+            alt="Event 4"
+            class="rounded-xl shadow-md hover:scale-105 transition-transform duration-300"
+            onclick="openLightbox(this.src)">
+        </div>
+        <div class="cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1602631985686-1bb0e6a8696e?q=80&w=870&auto=format&fit=crop"
+            alt="Event 5"
+            class="rounded-xl shadow-md hover:scale-105 transition-transform duration-300"
+            onclick="openLightbox(this.src)">
+        </div>
+        <div class="cursor-pointer">
+            <img src="https://plus.unsplash.com/premium_photo-1681830630610-9f26c9729b75?q=80&w=870&auto=format&fit=crop"
+            alt="Event 6"
+            class="rounded-xl shadow-md hover:scale-105 transition-transform duration-300"
+            onclick="openLightbox(this.src)">
+        </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden p-4">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl z-50">&times;</button>
+        <img id="lightboxImage"
+        src=""
+        style="max-height: 90vh; max-width: 100%; object-fit: contain;"
+        class="rounded-lg shadow-2xl transition-opacity duration-300 w-auto h-auto">
+    </div>
+    </section>
+
+
+<section>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 playfair">What Our Users Say</h2>
+        <p class="text-lg sm:text-xl text-gray-600">Join thousands of happy event creators and guests</p>
+        </div>
+
+        <div class="owl-carousel owl-theme testimonial-slider">
+        <!-- Testimonial 1 -->
+        <div class="item px-2 sm:px-4">
+            <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+            <div class="flex items-center mb-6">
+                <img src="https://plus.unsplash.com/premium_photo-1661629158345-7878e20403c0?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User"
+                style="width: 48px; height: 48px;" class="aspect-square rounded-full object-cover border-4 border-primary/20">
+                <div class="ml-4">
+                <h4 class="font-bold text-lg sm:text-xl">Sarah Johnson</h4>
+                <p class="text-gray-500 text-sm sm:text-base">Wedding Planner</p>
+                </div>
+            </div>
+            <div class="text-gray-700 mb-4 text-sm sm:text-base">
+                <i class="fas fa-quote-left text-primary opacity-20 text-2xl sm:text-3xl float-left mr-2 -mt-1 sm:-mt-2"></i>
+                <p class="leading-relaxed">EventSharer made collecting wedding photos from all our guests so effortless. The QR code feature was a huge hit and we got hundreds of amazing shots we would have otherwise missed!</p>
+            </div>
+            <div class="flex text-yellow-400 text-base sm:text-lg">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            </div>
+        </div>
+
+        <!-- Repeat for each testimonial (examples below only for brevity) -->
+
+        <div class="item px-2 sm:px-4">
+            <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+            <div class="flex items-center mb-6">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User"
+                style="width: 48px; height: 48px;" class="aspect-square rounded-full object-cover border-4 border-primary/20">
+                <div class="ml-4">
+                <h4 class="font-bold text-lg sm:text-xl">Michael Chen</h4>
+                <p class="text-gray-500 text-sm sm:text-base">Corporate Event Organizer</p>
+                </div>
+            </div>
+            <div class="text-gray-700 mb-4 text-sm sm:text-base">
+                <i class="fas fa-quote-left text-primary opacity-20 text-2xl sm:text-3xl float-left mr-2 -mt-1 sm:-mt-2"></i>
+                <p class="leading-relaxed">For our annual sales conference, Eventsharer was the perfect solution. The private access and bulk download features saved us hours of work collecting presentations and photos from speakers.</p>
+            </div>
+            <div class="flex text-yellow-400 text-base sm:text-lg">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            </div>
+            </div>
+        </div>
+
+        <!-- Continue for the rest of the testimonials (images all updated similarly) -->
+
+        <div class="item px-2 sm:px-4">
+            <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+            <div class="flex items-center mb-6">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User"
+                style="width: 48px; height: 48px;" class="aspect-square rounded-full object-cover border-4 border-primary/20">
+                <div class="ml-4">
+                <h4 class="font-bold text-lg sm:text-xl">Jessica Williams</h4>
+                <p class="text-gray-500 text-sm sm:text-base">Birthday Party Host</p>
+                </div>
+            </div>
+            <div class="text-gray-700 mb-4 text-sm sm:text-base">
+                <i class="fas fa-quote-left text-primary opacity-20 text-2xl sm:text-3xl float-left mr-2 -mt-1 sm:-mt-2"></i>
+                <p class="leading-relaxed">I used Eventsharer for my daughter's sweet 16 and it was magical! All her friends uploaded photos and videos throughout the night, and we had a complete album by the next morning. So much better than social media!</p>
+            </div>
+            <div class="flex text-yellow-400 text-base sm:text-lg">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            </div>
+        </div>
+
+        <!-- ...continue for others -->
+
+        </div>
+    </div>
+    </section>
+
+
+
+<section class="bg-white py-20 px-6 md:px-12 lg:px-24" id="contact">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 playfair">Contact Us</h2>
+        <p class="text-xl text-gray-600">We are always happy to answer your inquiries</p>
+    </div>
+
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <!-- Left: Contact Form with Image Decorations -->
+        <div class="relative overflow-hidden"> <!-- ADDED overflow-hidden -->
+
+        <!-- Decorative images -->
+        <div class="absolute -top-6 -left-6 sm:-top-10 sm:-left-10 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32">
+            <img src="https://plus.unsplash.com/premium_photo-1661776159919-ec12aefb81e7?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+            class="w-full h-full object-cover rounded-xl shadow-lg ring-4 ring-white" 
+            alt="Decor">
+        </div>
+        <div class="absolute -bottom-8 -right-8 sm:-bottom-12 sm:-right-12 w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 z-0">
+            <img src="https://plus.unsplash.com/premium_photo-1661306437817-8ab34be91e0c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+            class="w-full h-full object-cover rounded-xl shadow-xl ring-4 ring-white" 
+            alt="Decor">
+        </div>
+
+        <!-- Contact Form -->
+        <div class="relative z-10 bg-white p-6 sm:p-8 rounded-2xl shadow-2xl">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Get in Touch</h2>
+            <form class="space-y-5">
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">Name</label>
+                <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">Email</label>
+                <input type="email" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">Message</label>
+                <textarea rows="4" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400"></textarea>
+            </div>
+            <button type="submit"
+                class="bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white rounded-full px-6 py-3 font-medium transition-all">
+                Send Message
+            </button>
+            </form>
+        </div>
+        </div>
+
+        <!-- Right: Background Image -->
+        <div>
+        <img src="https://images.pexels.com/photos/13434434/pexels-photo-13434434.jpeg"
+            alt="Contact illustration"
+            class="w-full h-full object-cover rounded-2xl shadow-xl">
+        </div>
+    </div>
+    </section>
+
+
+<!-- FAQ Section -->
+<section class="mt-5 bg-white p-6">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center playfair">Frequently Asked Questions</h2>
+        
+        <div class="space-y-4">
+            <div class="faq-item pb-6">
+                <div class="flex items-center justify-between cursor-pointer group" onclick="toggleFAQ('faq1')">
+                    <h3 class="font-bold text-lg group-hover:text-primary transition">How much does it cost to use Eventsharer?</h3>
+                    <i id="faq1-icon" class="fas fa-chevron-down text-gray-400 group-hover:text-primary transition"></i>
+                </div>
+                <div id="faq1-content" class="faq-content max-h-0 overflow-hidden transition-all duration-300">
+                    <p class="text-gray-600 pt-3 pr-10">Our basic features are completely free to use forever. We also offer premium plans with additional storage and features starting at just $4.99/month.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item pb-6">
+                <div class="flex items-center justify-between cursor-pointer group" onclick="toggleFAQ('faq2')">
+                    <h3 class="font-bold text-lg group-hover:text-primary transition">Can I make my event private?</h3>
+                    <i id="faq2-icon" class="fas fa-chevron-down text-gray-400 group-hover:text-primary transition"></i>
+                </div>
+                <div id="faq2-content" class="faq-content max-h-0 overflow-hidden transition-all duration-300">
+                    <p class="text-gray-600 pt-3 pr-10">Absolutely! When creating your event, you can choose to make it public, private but accessible via link, or private with invitation-only access.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item pb-6">
+                <div class="flex items-center justify-between cursor-pointer group" onclick="toggleFAQ('faq3')">
+                    <h3 class="font-bold text-lg group-hover:text-primary transition">How long are photos and videos stored?</h3>
+                    <i id="faq3-icon" class="fas fa-chevron-down text-gray-400 group-hover:text-primary transition rotate-180"></i>
+                </div>
+                <div id="faq3-content" class="faq-content max-h-0 overflow-hidden transition-all duration-300">
+                    <p class="text-gray-600 pt-3 pr-10">All your content is stored indefinitely in free accounts, but we recommend downloading backups. Premium accounts get enhanced backup options.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item pb-6">
+                <div class="flex items-center justify-between cursor-pointer group" onclick="toggleFAQ('faq4')">
+                    <h3 class="font-bold text-lg group-hover:text-primary transition">Can I download a full album?</h3>
+                    <i id="faq4-icon" class="fas fa-chevron-down text-gray-400 group-hover:text-primary transition rotate-180"></i>
+                </div>
+                <div id="faq4-content" class="faq-content max-h-0 overflow-hidden transition-all duration-300">
+                    <p class="text-gray-600 pt-3 pr-10">Yes! With Eventsharer you can download all photos and videos from an event in one zip file, or select individual photos to download.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item pb-6">
+                <div class="flex items-center justify-between cursor-pointer group" onclick="toggleFAQ('faq5')">
+                    <h3 class="font-bold text-lg group-hover:text-primary transition">What's the file size limit for uploads?</h3>
+                    <i id="faq5-icon" class="fas fa-chevron-down text-gray-400 group-hover:text-primary transition rotate-180"></i>
+                </div>
+                <div id="faq5-content" class="faq-content max-h-0 overflow-hidden transition-all duration-300">
+                    <p class="text-gray-600 pt-3 pr-10">Photos can be up to 30MB each. Videos have a limit of 5 minutes or 500MB, whichever comes first. Premium accounts get higher limits.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="relative bg-pink-500 py-20 px-6 md:px-12 overflow-hidden mt-6">
+    <!-- Background image with overlay -->
+    <div class="absolute inset-0">
+        <img src="https://images.pexels.com/photos/167491/pexels-photo-167491.jpeg" 
+            alt="Event background" 
+            class="w-full h-full object-cover opacity-20">
+        <div class="absolute inset-0 bg-white opacity-40"></div>
+    </div>
+
+    <!-- CTA Content -->
+    <div class="relative max-w-4xl mx-auto text-center text-gray-800">
+        <h2 class="text-4xl font-bold mb-4">Ready to Share Your Event?</h2>
+        <p class="text-lg mb-8">
+        Create a beautiful shared album for your next wedding, concert, birthday, or special moment — in just minutes.
+        </p>
+        <a href="#get-started"
+        class="bg-white text-black rounded-full px-6 py-3 font-medium transition-all hover:bg-gray-200">
+        Get Started
+        </a>
+    </div>
+    </section>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("billingToggle");
+    const priceElements = document.querySelectorAll("[data-price]");
+    const cycleTexts = document.querySelectorAll("[data-cycle]");
+    const proButtons = document.querySelectorAll("[data-plan='pro']");
+
+    toggle.addEventListener("change", function () {
+        const yearly = toggle.checked;
+
+        priceElements.forEach(el => {
+            const monthlyPrice = parseFloat(el.dataset.price);
+            if (yearly) {
+                const yearlyPrice = (monthlyPrice * 12 * 0.9).toFixed(2); // 10% off
+                el.textContent = `$${yearlyPrice}`;
+            } else {
+                el.textContent = `$${monthlyPrice.toFixed(2)}`;
+            }
+        });
+
+        cycleTexts.forEach(el => {
+            el.textContent = yearly ? "/year" : "/month";
+        });
+
+        // Change Pro button color on yearly
+        proButtons.forEach(btn => {
+            if (yearly) {
+                btn.className = "w-full bg-gray-800 hover:bg-gray-900 text-white rounded-lg py-3 font-medium transition";
+            } else {
+                btn.className = "w-full bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white rounded-lg py-3 font-medium transition";
+            }
+        });
+    });
+});
+</script>
+
+
+{% endblock content%}
+
+
+

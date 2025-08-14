@@ -1,0 +1,190 @@
+{% extends 'eventsharer_admin/base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="max-w-7xl mx-auto">
+
+  {% if show_invitee_form %}
+  <!-- Invitee popup -->
+  <div id="invitee-popup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <form id="invitee-form" method="POST" action="" class="bg-white p-6 rounded-lg max-w-sm w-full shadow-lg">
+      {% csrf_token %}
+      <h2 class="text-lg font-semibold mb-4">Please enter your name to start adding pictures to the event</h2>
+      <p id="invitee-error" class="text-red-600 mb-3" style="display: none;"></p>
+
+      <label for="first_name" class="block mb-1">First Name</label>
+      <input type="text" id="first_name" name="first_name" required class="w-full mb-4 px-3 py-2 border rounded" />
+
+      <label for="last_name" class="block mb-1">Last Name</label>
+      <input type="text" id="last_name" name="last_name" required class="w-full mb-4 px-3 py-2 border rounded" />
+
+      <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white py-2 rounded transition">
+        Add
+      </button>
+    </form>
+  </div>
+  {% endif %}
+
+  <!-- GLightbox -->
+
+
+  <section class="max-w-8xl mx-auto p-6 bg-gray-100 rounded-xl">
+    <h2 class="fw-bold text-3xl md:text-4xl mb-4">{{ event.title }} - {{ event.created_at }}</h2>
+    <hr>
+
+    <!-- Upload Spinner -->
+    <div id="upload-spinner" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="loader border-4 border-pink-200 border-t-pink-600 rounded-full w-12 h-12 animate-spin"></div>
+    </div>
+
+    <style>
+      .loader {
+        border-top-color: #db2777;
+      }
+    </style>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+      <!-- Upload Button -->
+      {% if not show_invitee_form %}
+      <label for="upload-media" class="flex flex-col items-center justify-center bg-gray-50 text-gray-600 hover:text-white hover:bg-gray-600 border-2 border-dashed border-gray-400 rounded-lg h-48 cursor-pointer transition-all group relative">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mb-1 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 12V4m0 0l-4 4m4-4l4 4" />
+        </svg>
+        <span class="text-sm font-medium">Upload Photo/Video</span>
+        <input id="upload-media" type="file" accept="image/*,video/*" multiple class="hidden" />
+      </label>
+      {% endif %}
+
+      <!-- Existing Media -->
+      {% for item in media %}
+      <div class="bg-white rounded-lg overflow-hidden relative group">
+        {% if item.media_type == 'image' %}
+        <a href="{{ item.file.url }}" class="glightbox">
+          <img src="{{ item.file.url }}" class="w-full h-48 object-cover" loading="lazy" />
+        </a>
+        {% elif item.media_type == 'video' %}
+        <a href="{{ item.file.url }}" class="glightbox" data-type="video">
+          <div class="bg-black h-48 relative">
+            <video muted class="w-full h-full object-cover pointer-events-none" preload="none" loading="lazy">
+              <source src="{{ item.file.url }}" />
+            </video>
+            <div class="absolute inset-0 flex items-center justify-center text-white opacity-80">
+              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </a>
+        {% endif %}
+        
+        <div class="p-2 text-xs text-gray-600 truncate">
+          Uploaded by
+          {% if item.uploaded_by %}
+            {{ item.uploaded_by.first_name }} {{ item.uploaded_by.last_name }}
+          {% else %}
+            Owner
+          {% endif %}
+          on {{ item.uploaded_at|date:"M d, Y" }}
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4 text-center text-gray-600">
+        No media uploaded yet.
+      </div>
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    const lightbox = GLightbox();
+
+    // Invitee form submission
+    const inviteeForm = document.getElementById('invitee-form');
+    if (inviteeForm) {
+      document.body.style.overflow = 'hidden';
+      inviteeForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const firstName = this.first_name.value.trim();
+        const lastName = this.last_name.value.trim();
+        const errorElem = document.getElementById('invitee-error');
+        errorElem.style.display = 'none';
+        errorElem.textContent = '';
+
+        if (!firstName || !lastName) {
+          errorElem.textContent = 'Both first name and last name are required.';
+          errorElem.style.display = 'block';
+          return;
+        }
+
+        try {
+          const csrfToken = this.querySelector('[name=csrfmiddlewaretoken]').value;
+          const res = await fetch(window.location.href, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'X-CSRFToken': csrfToken
+            },
+            body: new URLSearchParams({ first_name: firstName, last_name: lastName })
+          });
+
+          const data = await res.json();
+          if (data.success) {
+            document.getElementById('invitee-popup').style.display = 'none';
+            document.body.style.overflow = '';
+            location.reload();
+          } else {
+            errorElem.textContent = data.error || 'An unknown error occurred.';
+            errorElem.style.display = 'block';
+          }
+        } catch {
+          errorElem.textContent = 'Network error, please try again.';
+          errorElem.style.display = 'block';
+        }
+      });
+    }
+
+    // Upload logic with spinner
+    const uploadInput = document.getElementById('upload-media');
+    if (uploadInput) {
+      uploadInput.addEventListener('change', async function() {
+        const files = Array.from(this.files);
+        if (!files.length) return;
+
+        document.getElementById('upload-spinner').classList.remove('hidden');
+
+        for (const file of files) {
+          const formData = new FormData();
+          formData.append('file', file);
+
+          try {
+            const res = await fetch(window.location.href, {
+              method: 'POST',
+              headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+              body: formData
+            });
+
+            const data = await res.json();
+            if (data.success) {
+              location.reload();
+            } else {
+              alert(data.error || 'Upload failed');
+            }
+          } catch {
+            alert('Upload error, please try again.');
+          }
+        }
+
+        document.getElementById('upload-spinner').classList.add('hidden');
+        this.value = '';
+      });
+    }
+  </script>
+
+</main>
+{% endblock %}

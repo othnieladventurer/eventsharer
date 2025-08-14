@@ -1,0 +1,21 @@
+<div id="deleteEventModal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden px-4">
+  <div class="bg-white rounded-xl w-full max-w-md p-6 space-y-5 shadow-lg">
+    <div class="flex justify-between items-center">
+      <h3 class="text-lg font-semibold text-gray-900">Delete Event</h3>
+      <button type="button" onclick="closeDeleteModal()" class="text-gray-400 hover:text-gray-700">
+        <svg data-lucide="x" class="w-5 h-5"></svg>
+      </button>
+    </div>
+
+    <p class="text-gray-700">Are you sure you want to delete <strong id="delete_event_name"></strong>?</p>
+
+    <form id="deleteEventForm" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="event_slug" id="delete_event_slug">
+
+      <div class="flex justify-end gap-3 pt-3">
+        <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">Yes, Delete</button>
+      </div>
+    </form>
+  </div>
+</div>

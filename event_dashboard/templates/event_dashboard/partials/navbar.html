@@ -1,0 +1,106 @@
+{% load static %}
+
+<!-- Navigation -->
+<nav class="bg-white shadow-lg sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-20">
+      
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="flex items-center">
+          <i class="fa fa-glass-cheers text-pink-600 text-3xl mr-3"></i>
+          <span class="text-2xl font-bold text-pink-600 playfair">Eventsharer</span>
+        </a>
+      </div>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/#hero" class="text-gray-700 hover:text-pink-600 transition font-medium">Home</a>
+        <a href="/#events" class="text-gray-700 hover:text-pink-600 transition font-medium">Events</a>
+        <a href="/#share" class="text-gray-700 hover:text-pink-600 transition font-medium">Share</a>
+        <a href="/#features" class="text-gray-700 hover:text-pink-600 transition font-medium">Features</a>
+        <a href="/#pricing" class="text-gray-700 hover:text-pink-600 transition font-medium">Pricing</a>
+        <a href="/#gallery" class="text-gray-700 hover:text-pink-600 transition font-medium">Gallery</a>
+        <a href="/#contact" class="text-gray-700 hover:text-pink-600 transition font-medium">Contact</a>
+      </div>
+
+      <!-- Auth Buttons (Desktop) -->
+      {% if user.is_authenticated %}
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="{% url 'eventadm:admin'%}" class="bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white rounded-full px-6 py-3 font-medium transition-all">My Events</a>
+          <a href="{% url 'users:custom_logout' %}" class="bg-gray-600 hover:bg-gray-700 text-white rounded-full px-6 py-3 font-medium transition-all">Logout</a>
+        </div>
+      {% else %}
+        <div class="hidden md:flex items-center">
+          <a href="{% url 'users:custom_login' %}" class="bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white rounded-full px-6 py-3 font-medium transition-all">Sign In</a>
+        </div>
+      {% endif %}
+
+      <!-- Hamburger -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Navigation -->
+<div id="mobile-nav" class="hidden fixed top-20 left-0 right-0 bg-white shadow-lg z-40 p-6 transition-opacity duration-300 ease-in-out opacity-0 space-y-4">
+  
+  <!-- Page Links -->
+  <a href="/#hero" class="block text-gray-800 hover:text-pink-600 text-lg font-medium">Home</a>
+  <a href="/#events" class="block text-gray-800 hover:text-pink-600 text-lg font-medium">Events</a>
+  <a href="/#share" class="block text-gray-800 hover:text-pink-600 text-lg font-medium">Share</a>
+  <a href="/#features" class="block text-gray-800 hover:text-pink-600 text-lg font-medium">Features</a>
+  <a href="/#pricing" class="block text-gray-800 hover:text-pink-600 text-lg font-medium">Pricing</a>
+  <a href="/#gallery" class="block text-gray-800 hover:text-pink-600 text-lg font-medium">Gallery</a>
+  <a href="/#contact" class="block text-gray-800 hover:text-pink-600 text-lg font-medium">Contact</a>
+
+  <!-- Auth Buttons -->
+  {% if user.is_authenticated %}
+    <a href="{% url 'eventadm:admin'%}" class="block w-full bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white rounded-full px-6 py-3 font-medium">My Events</a>
+    <a href="{% url 'users:custom_logout' %}" class="block w-full bg-gray-600 hover:bg-gray-700 text-white rounded-full px-6 py-3 font-medium">Logout</a>
+  {% else %}
+    <a href="{% url 'users:custom_login'%}" class="block w-full bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white rounded-full px-6 py-3 font-medium">Sign In</a>
+  {% endif %}
+</div>
+
+<!-- Optional: Enable smooth scrolling -->
+<body class="scroll-smooth">
+
+<!-- JS for mobile menu -->
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileNav = document.getElementById('mobile-nav');
+  let isMenuOpen = false;
+
+  mobileMenuButton?.addEventListener('click', () => {
+    if (!isMenuOpen) {
+      mobileNav.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        mobileNav.classList.remove('opacity-0');
+        mobileNav.classList.add('opacity-100');
+      });
+    } else {
+      mobileNav.classList.remove('opacity-100');
+      mobileNav.classList.add('opacity-0');
+      setTimeout(() => {
+        mobileNav.classList.add('hidden');
+      }, 300);
+    }
+    isMenuOpen = !isMenuOpen;
+  });
+
+  window.addEventListener('click', (e) => {
+    if (isMenuOpen && !mobileNav.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+      mobileNav.classList.remove('opacity-100');
+      mobileNav.classList.add('opacity-0');
+      setTimeout(() => {
+        mobileNav.classList.add('hidden');
+      }, 300);
+      isMenuOpen = false;
+    }
+  });
+</script>

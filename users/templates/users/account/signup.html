@@ -1,0 +1,86 @@
+{% extends "event_dashboard/base.html" %}
+{% load i18n widget_tweaks %}
+
+{% block content %}
+<main class="min-h-screen flex items-center justify-center bg-gray-50 px-4 mt-5 mb-5">
+  <div class="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden">
+    <div class="bg-gradient-to-r from-pink-500 to-rose-600 p-6 text-white text-center">
+      <div class="flex justify-center mb-4">
+        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+          <i class="fas fa-user-plus text-3xl bg-gradient-to-r from-pink-500 to-rose-600 bg-clip-text text-transparent"></i>
+        </div>
+      </div>
+      <h1 class="text-2xl font-bold">Eventsharer</h1>
+      <p class="text-sm opacity-90 mt-1">Create your account and add your events</p>
+    </div>
+
+    <div class="p-8">
+      {% if form.errors %}
+      <div class="mb-4 p-4 bg-red-100 text-red-700 text-sm rounded">
+        <ul>
+          {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <form method="post" action="" id="signupForm" class="space-y-6">
+        {% csrf_token %}
+
+        <!-- Email -->
+        <div>
+          <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">{% trans "Email" %}</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-envelope text-gray-400"></i>
+            </div>
+            {{ form.email|add_class:"pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400 transition duration-300 text-sm" }}
+          </div>
+        </div>
+
+        <!-- Password1 -->
+        <div>
+          <label for="{{ form.password1.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">{% trans "Password" %}</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-lock text-gray-400"></i>
+            </div>
+            {{ form.password1|add_class:"pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400 transition duration-300 text-sm" }}
+          </div>
+        </div>
+
+        <!-- Password2 -->
+        <div>
+          <label for="{{ form.password2.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">{% trans "Confirm Password" %}</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-lock text-gray-400"></i>
+            </div>
+            {{ form.password2|add_class:"pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400 transition duration-300 text-sm" }}
+          </div>
+        </div>
+
+        {% if form.captcha %}
+        <div>
+          {{ form.captcha }}
+        </div>
+        {% endif %}
+
+        <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white py-3 px-4 rounded-full font-medium transition-all flex items-center justify-center">
+          <span id="signupText">{% trans "Sign up" %}</span>
+          <i id="signupSpinner" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+        </button>
+      </form>
+
+      <p class="mt-4 text-center text-sm text-gray-600">
+        {% trans "Already have an account?" %}
+        <a href="{% url 'users:custom_login' %}" class="font-medium text-rose-600 hover:text-rose-500">{% trans "Sign in" %}</a>
+      </p>
+    </div>
+  </div>
+</main>
+{% endblock %}
+ 

@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" x-data="{ sidebarOpen: false }" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <title>Eventsharer Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <style>
+        #checkout-spinner {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 9999;
+            font-size: 1.5rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+
+</head>
+<body class="bg-gray-50 text-gray-800 h-full">
+
+{% block content %}
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-9">
+            <p class="mb-5">Go back to <a class="text-pink-600" href="{% url 'event_sharer:index' %}">home</a> page</p>
+            <h2 class="text-3xl md:text-4xl font-bold">Your Subscription Plans</h2>
+            <p class="text-gray-600 mt-2">Manage and compare available plans below</p>
+        </div>
+
+        <!-- Billing Toggle -->
+        <div class="flex flex-col items-center mb-10">
+            <label for="billingToggle" class="flex items-center justify-center cursor-pointer">
+                <span class="mr-3 text-gray-700 font-medium">Monthly</span>
+
+                <div id="toggleWrapper" class="toggle-wrapper">
+                <input id="billingToggle" type="checkbox" class="sr-only">
+                <div class="dot"></div>
+                </div>
+
+                <span class="ml-3 text-gray-700 font-medium">Yearly</span>
+            </label>
+
+            <!-- General discount sentence -->
+            <span class="text-pink-600 text-sm mt-4 block md:hidden text-center">
+                Save 10% with yearly plans
+            </span>
+            <span class="text-pink-600 text-sm hidden md:inline ml-2">
+                Save 10% with yearly plans
+            </span>
+            </div>
+
+        <!-- Plans Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {% for plan in plans %}
+            <div data-plan-id="{{ plan.id }}"  class="{% if plan.name == 'pro' %}relative border-2 border-pink-500 transform scale-105{% else %}border border-gray-200{% endif %} bg-white rounded-xl shadow-md overflow-hidden">
+
+                {% if plan.name == 'pro' %}
+                <div class="absolute top-0 right-0 bg-pink-500 text-white px-4 py-1 text-sm font-bold rounded-bl-lg z-10">
+                    Most Popular
+                </div>
+                {% endif %}
+
+                <!-- Card Content -->
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-4 capitalize">{{ plan.get_name_display }}</h3>
+                    <p class="text-gray-600 mb-6">
+                        {% if plan.name == 'basic' %}
+                            Perfect for small events and testing the platform
+                        {% elif plan.name == 'pro' %}
+                            Great for weddings and medium events
+                        {% elif plan.name == 'business' %}
+                            Ideal for professional event planners
+                        {% else %}
+                            Explore and try it out for free
+                        {% endif %}
+                    </p>
+
+                    <div class="text-5xl font-bold mb-6">
+                        <span class="price-monthly">${{ plan.monthly_price }}</span>
+                        <span class="price-yearly hidden">${{ plan.yearly_price|floatformat:2 }}</span>
+                        <span class="text-gray-500 text-lg">/<span class="billing-cycle">month</span></span>
+                    </div>
+
+                    <div id="loading-spinner" style="display:none;">Loading checkout…</div>
+
+                    <button class="{% if plan.name == 'pro' %}
+                                    w-full bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white
+                                {% elif plan.name == 'business' %}
+                                    w-full bg-gray-800 hover:bg-gray-900 text-white
+                                {% else %}
+                                    w-full bg-gray-200 text-gray-800 hover:bg-gray-300
+                                {% endif %}
+                                rounded-lg py-3 font-medium transition">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Features -->
+                <div class="border-t border-gray-200 p-8 bg-white">
+                    <ul class="space-y-4">
+                        {% for feature in plan.description %}
+                        <li class="flex items-start {% if 'No' in feature %}text-gray-400{% endif %}">
+                            <i class="fas {% if 'No' in feature %}fa-times{% else %}fa-check text-green-500{% endif %} mt-1 mr-3"></i>
+                            <span>{{ feature }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+<!-- Toggle Script -->
+
+<script src=""></script>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const stripe = Stripe("{{ STRIPE_PUBLIC_KEY }}");
+    const csrftoken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    const spinner = document.getElementById('checkout-spinner');
+
+    document.querySelectorAll("button[data-plan-id]").forEach(button => {
+      button.addEventListener("click", async function () {
+        const card = this.closest("[data-plan-id]");
+        const planId = card.dataset.planId;
+        const billingCycle = document.querySelector('input[name="billing_cycle"]:checked')?.value || 'monthly';
+
+        // UI feedback
+        button.disabled = true;
+        spinner.style.display = "flex";
+
+        try {
+          const response = await fetch("{% url 'eventadm:create_checkout_session' %}", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+              "X-CSRFToken": csrftoken,
+            },
+            body: new URLSearchParams({
+              plan_id: planId,
+              billing_cycle: billingCycle
+            }),
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          if (data.sessionId) {
+            await stripe.redirectToCheckout({ sessionId: data.sessionId });
+          } else {
+            alert("Error creating checkout session.");
+          }
+        } catch (err) {
+          console.error("Checkout error", err);
+          alert("Payment failed. Please try again.");
+        } finally {
+          spinner.style.display = "none";
+          button.disabled = false;
+        }
+      });
+    });
+  });
+</script>
+
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+
+

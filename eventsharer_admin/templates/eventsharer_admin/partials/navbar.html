@@ -1,0 +1,32 @@
+{% if user.is_authenticated %}
+<header class="bg-white shadow-sm border-b px-6 py-1 flex justify-between items-center">
+    <button
+        @click="sidebarOpen = true"
+        class="md:hidden p-2 text-white bg-gradient-to-r from-pink-500 to-rose-600 rounded-md shadow-md focus:outline-none mr-4"
+        aria-label="Open sidebar"
+    >
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="flex-1"></div>
+
+    <div class="relative" x-data="{ open: false }">
+        <button @click="open = !open" class="flex items-center space-x-3 hover:bg-gray-100 px-3 py-2 rounded-md transition focus:outline-none">
+            <img src="https://ui-avatars.com/api/?name={{ user.username }}" class="w-9 h-9 rounded-full" alt="User Avatar">
+            <i :class="open ? 'fa-chevron-up' : 'fa-chevron-down'" class="fas text-xs"></i>
+        </button>
+
+        <div
+            x-show="open"
+            @click.outside="open = false"
+            x-transition
+            class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg py-2 z-40"
+        >
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{{ user|slice:":10" }}</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+            <a href="{% url 'users:custom_logout' %}" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-100">Logout</a>
+        </div>
+    </div>
+</header>
+{% endif %}
