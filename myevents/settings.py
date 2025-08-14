@@ -41,7 +41,7 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1', 'eventsharer.saasiskey.com', 'eventsha
 CSRF_TRUSTED_ORIGINS = [
     'https://www.eventsharer.saasiskey.com',
     'https://eventsharer.saasiskey.com',
-    'eventsharer-production-3924.up.railway.app',
+    'https://eventsharer-production-3924.up.railway.ap',
 ]
 
 
@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_recaptcha',
+
      # Allauth
     'allauth',
     'allauth.account',
@@ -67,7 +69,8 @@ INSTALLED_APPS = [
 
     'event_dashboard', 
     'eventsharer_admin',
-    'users',  
+    'users', 
+    'widget_tweaks', 
 ]
 
 MIDDLEWARE = [
