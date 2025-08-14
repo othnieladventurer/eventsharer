@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+.playfair {
+    font-family: 'Playfair Display', serif;
+}
+
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.upload-box {
+    border: 3px dashed #c084fc;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+}
+
+.upload-box:hover {
+    border-color: #a855f7;
+    background-color: #f5f3ff;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.faq-content {
+    transition: max-height 0.3s ease;
+}
+
+.testimonial-card {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.hero {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+}
+
+.hero h1, .hero p {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.event-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 180px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.mobile-nav {
+    transition: transform 0.3s ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.floating { 
+    animation: float 4s ease-in-out infinite; 
+}
+
+
+
+
+
+.toggle-wrapper {
+    position: relative;
+    width: 3.5rem; /* 14 * 0.25rem */
+    height: 2rem;  /* 8 * 0.25rem */
+    border-radius: 9999px;
+    background-color: #D1D5DB; /* gray-300 */
+    transition: background-color 0.3s ease;
+}
+
+.dot {
+    position: absolute;
+    top: 0.25rem; /* 1 * 0.25rem */
+    left: 0.25rem;
+    width: 1.5rem; /* 6 * 0.25rem */
+    height: 1.5rem;
+    background-color: white;
+    border-radius: 9999px;
+    transition: transform 0.3s ease;
+}
+
+.toggle-wrapper.checked {
+    background-color: #EC4899; /* pink-500 */
+}
+
+.toggle-wrapper.checked .dot {
+    transform: translateX(1.5rem); /* shift right when checked */
+}
+
+
+
