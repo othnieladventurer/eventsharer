@@ -36,12 +36,12 @@ SECRET_KEY = 'django-insecure-!c$z86fe9^^0zn2z&1xai!-wm9=^o5*91p=2+dzuqz&qtpw#m1
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1', 'eventsharer.saasiskey.com', 'eventsharer-production.up.railway.app']
+ALLOWED_HOSTS = ['localhost','127.0.0.1', 'eventsharer.saasiskey.com', 'eventsharer-production-3924.up.railway.app']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://www.eventsharer.saasiskey.com',
     'https://eventsharer.saasiskey.com',
-    'https://eventsharer-production.up.railway.app',
+    'eventsharer-production-3924.up.railway.app',
 ]
 
 
